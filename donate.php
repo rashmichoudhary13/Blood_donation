@@ -196,7 +196,10 @@ if (isset($_POST['submit'])) {
 
 		if(isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email) && isset($password)){
            $DonorDOB = $year."-".$month."-".$day;
-			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password')";
+
+            $password  = md5($password);
+
+			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password','$blood_group')";
 		    
 			if(mysqli_query($connection,$sql)){
 				$submitSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
@@ -249,6 +252,7 @@ if (isset($_POST['submit'])) {
 		text-align: left;
 	}
 
+
 	h1 {
 		color: white;
 	}
@@ -286,14 +290,17 @@ if (isset($_POST['submit'])) {
 			<form class="form-group" action="" method="post" novalidate="">
 				<div class="form-group">
 					<label for="fullname">Full Name</label>
-					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control">
-				</div><!--full name-->
+					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if (isset($name)) echo $name; ?>" >
+				
 				<?php if (isset($nameError)) echo $nameError; ?>
+
+				</div><!--full name-->
 
 				<div class="form-group">
 					<label for="name">Blood Group</label><br>
 					<select class="form-control demo-default" id="blood_group" name="blood_group" required>
 						<option value="">---Select Your Blood Group---</option>
+						<?php if(isset($blood_group))  echo '<option selected=""value="'.$blood_group.'">'.$blood_group.'</option>'; ?>
 						<option value="A+">A+</option>
 						<option value="A-">A-</option>
 						<option value="B+">B+</option>
@@ -309,12 +316,15 @@ if (isset($_POST['submit'])) {
 				<div class="form-group">
 					<label for="gender">Gender</label><br>
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
-					Fe-male<input type="radio" name="gender" id="gender" value="Fe-male" style="margin-left:10px;">
+
+					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if(isset($gender)) { if($gender=="Female") echo "checked"; }?>>
+
 				</div><!--gender-->
 				<div class="form-inline">
 					<label for="name">Date of Birth</label><br>
 					<select class="form-control demo-default" id="date" name="day" style="margin-bottom:10px;" required>
 						<option value="">---Date---</option>
+						<?php if(isset($day))  echo '<option selected=""value="'.$day.'">'.$day.'</option>'; ?>
 						<option value="01">01</option>
 						<option value="02">02</option>
 						<option value="03">03</option>
@@ -349,6 +359,7 @@ if (isset($_POST['submit'])) {
 					</select>
 					<select class="form-control demo-default" name="month" id="month" style="margin-bottom:10px;" required>
 						<option value="">---Month---</option>
+						<?php if(isset($month))  echo '<option selected=""value="'.$month.'">'.$month.'</option>'; ?>
 						<option value="01">January</option>
 						<option value="02">February</option>
 						<option value="03">March</option>
@@ -364,6 +375,7 @@ if (isset($_POST['submit'])) {
 					</select>
 					<select class="form-control demo-default" id="year" name="year" style="margin-bottom:10px;" required>
 						<option value="">---Year---</option>
+						<?php if(isset($year))  echo '<option selected=""value="'.$year.'">'.$year.'</option>'; ?>
 						<option value="1957">1957</option>
 						<option value="1958">1958</option>
 						<option value="1959">1959</option>
@@ -415,13 +427,13 @@ if (isset($_POST['submit'])) {
 
 				<div class="form-group">
 					<label for="fullname">Email</label>
-					<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control">
+					<input type="text" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please write correct email" class="form-control" value="<?php if (isset($email)) echo $email; ?>">
 				</div>
 				<?php if (isset($emailError)) echo $emailError; ?>
 
 				<div class="form-group">
 					<label for="contact_no">Contact No</label>
-					<input type="text" name="contact_no" value="" placeholder="+91**********" class="form-control" required pattern="^\d{10}$" title="10 numeric characters only" maxlength="10">
+					<input type="text" name="contact_no"  placeholder="+91**********" class="form-control" required pattern="^\d{10}$" title="10 numeric characters only" maxlength="10" value="<?php if (isset($contact)) echo $contact; ?>">
 				</div><!--End form-group-->
 				<?php if (isset($contact_noError)) echo $contact_noError; ?>
 
@@ -429,6 +441,7 @@ if (isset($_POST['submit'])) {
 					<label for="city">City</label>
 					<select name="city" id="city" class="form-control demo-default" required>
 						<option value="">-- Select --</option>
+						<?php if(isset($city))  echo '<option selected=""value="'.$city.'">'.$city.'</option>'; ?>
 						<optgroup title="Azad Jammu and Kashmir (Azad Kashmir)" label="&raquo; Azad Jammu and Kashmir (Azad Kashmir)"></optgroup>
 						<option value="Bagh">Bagh</option>
 						<option value="Bhimber">Bhimber</option>
@@ -579,7 +592,7 @@ if (isset($_POST['submit'])) {
 					<?php if (isset($c_passwordError)) echo $c_passwordError; ?>
 				</div><!--End form-group-->
 				<div class="form-inline">
-					<input type="checkbox" name="term" value="true" required style="margin-left:10px;">
+					<input type="checkbox" checked=""  name="term" value="true" required style="margin-left:10px;">
 					<span style="margin-left:10px;"><b>I am agree to donate my blood and show my Name, Contact Nos. and E-Mail in Blood donors List</b></span>
 				</div><!--End form-group-->
 
