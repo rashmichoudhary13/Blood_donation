@@ -52,11 +52,9 @@
 			<h2 class="text-center">Our Vission</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
+			WeCare envisions a world where every drop of blood counts. With our blood donation website, we aim to create a seamless platform connecting donors with recipients, saving lives one donation at a time. Our vision is to foster a community of compassionate individuals, ensuring a stable and timely supply of blood, and promoting a healthier, safer society.
 			</p>
-			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			
 		</div>
 	</div>
 	</div>
@@ -70,11 +68,9 @@
 			<h2 class="text-center">Our Goal</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
+			WeCare is dedicated to achieving several unique goals: to enhance blood donation awareness, making it a societal norm; to streamline the donation process, ensuring efficiency and accessibility for all; to build a diverse, active donor base; to leverage technology for real-time matching of donors and recipients; and to foster a culture of empathy, unity, and continuous support in the global community.
 			</p>
-			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			
 		</div>
 		<div ><img src="img/target.png" alt="Our Vission" class="rounded img-fluid float-right"></div>
 	</div>
@@ -91,11 +87,9 @@
 			<h2 class="text-center">Our Mission</h2>
 			<hr class="red-bar">
 			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
+			WeCare's mission is to save lives by connecting donors with those in need through our user-friendly blood donation platform. We are committed to ensuring a safe, reliable, and convenient donation experience for both donors and recipients. Through innovative technology and community engagement, we strive to bridge the gap between blood supply and demand, promoting a healthier future for all.
 			</p>
-			<p>
-				We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-			</p>
+			
 		</div>
 	</div>
 	</div>
