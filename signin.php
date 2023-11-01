@@ -3,6 +3,59 @@
 	//include header file
 	include ('include/header.php');
 
+	if(isset($_POST['SignIn'])){
+
+		// Check for Email
+		if (isset($_POST['email']) && !empty($_POST['email'])) {
+			$email = $_POST['email'];
+		} else {
+			$emailError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+	   <strong>Please fill the email field.</strong> 
+	   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+	   <span aria-hidden="true">&times;</span>
+	   </button>
+	   </div>';
+		}
+
+		// Check for Password
+		if (isset($_POST['password']) && !empty($_POST['password'])) {
+			$password = $_POST['password'];
+			$password = md5($password);
+		} else {
+			$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+	   <strong>Please fill the password field.</strong> 
+	   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+	   <span aria-hidden="true">&times;</span>
+	   </button>
+	   </div>';
+		}
+
+		// Login Query
+		if(isset($email) && isset($password)){
+			$sql = "SELECT * FROM donor WHERE password = '$password' AND email='$email'";
+			$result = mysqli_query($connection,$sql);
+
+			if(mysqli_num_rows($result)>0){
+
+				while($row = mysqli_fetch_assoc($result)){
+                    $_SESSION['user_id'] = $row['id'];
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['email'] = $row['email'];
+					$_SESSION['user_id'] = $row['id'];
+
+					header('Location:user/index.php');
+				}
+			}else{
+				$submitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+				<strong>Sorry! No Record Found. Please enter valid email or password.</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>';
+				 }
+		    }
+		}
+
 ?>
 
 <style>
@@ -47,17 +100,21 @@ box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 		<div class="col-md-6 offset-md-3 form-container">
 		<h3>SignIn</h3>
 		<hr class="red-bar">
+		<?php if (isset($submitError)) echo $submitError;?>
 		
 		<!-- Erorr Messages -->
 
 			<form action="" method="post" >
 				<div class="form-group">
-					<label for="email">Email/Phone no.</label>
-					<input type="text" name="email_phone" class="form-control" placeholder="Email Or Phone" required>
+					<label for="email">Email</label>
+					<input type="text" name="email" class="form-control" placeholder="Email" >
+					<?php if (isset($emailError)) echo $emailError;?>
 				</div>
+				
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="Password" required class="form-control">
+					<input type="password" name="password" placeholder="Password" class="form-control">
+					<?php if (isset($passwordError)) echo $passwordError;?>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-danger btn-lg center-aligned" type="submit" name="SignIn">SignIn</button>

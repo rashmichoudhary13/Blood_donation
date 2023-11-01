@@ -71,9 +71,9 @@ if (isset($_POST['submit'])) {
 	   </div>';
 		}
 
-		// Check for blood group
+		// Check for blood group to get save_life_date
 		if (isset($_POST['blood_group']) && !empty($_POST['blood_group'])) {
-			$blood_group = $_POST['blood_group'];
+			$save_the_date = $_POST['blood_group'];
 		} else {
 			$bloodError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 	   <strong>Please select blood_Group input.</strong> 
@@ -276,12 +276,12 @@ if (isset($_POST['submit'])) {
 		<div class="col-md-6 offset-md-3 form-container">
 			<h3>SignUp</h3>
 			<hr class="red-bar">
-			<?php if (isset($termError)) echo $termError;?>
-<?php if(isset($submitSuccess)) echo $submitSuccess;
+			<?php if (isset($termError)) echo $termError;
+			       if(isset($submitSuccess)) echo $submitSuccess;
 				if(isset($submitError)) echo $submitError;
-				?>
+			?>
 
-			<!-- Error Messages -->
+             <!-- Error Messages -->
 
 			<form class="form-group" action="" method="post" novalidate="">
 				<div class="form-group">
