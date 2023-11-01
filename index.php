@@ -11,7 +11,7 @@
 					<div class="col-md-6 offset-md-3">
 
 						<div class="header">
-							<h1 class="text-center">Donate the blood, save the life</h1>
+							<h1 class="text-center">Save Lives, Donate Blood: Be the Lifeline!</h1>
 						<p class="text-center">Donate the blood to help the others.</p>
 						</div>
 
@@ -55,9 +55,7 @@
 						<h1 class="text-center"  style="color: white; font-weight: 700;padding: 10px 0 0 0;">Donate The Blood</h1>
 						<hr class="white-bar">
 						<p class="text-center pera-text">
-							We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
-
-							We are a group of exceptional programmers; our aim is to promote education. If you are a student, then contact us to secure your future. We deliver free international standard video lectures and content. We are also providing services in Web & Software Development.
+						WeCare is a beacon of hope, urging kind-hearted souls to join hands in the noble act of giving. With open arms, we invite individuals to embrace the profound joy of saving lives. Our platform resonates with compassion, fostering a community where every drop of donated blood becomes a lifeline. Together, we celebrate the beauty of selfless giving, transforming ordinary moments into extraordinary acts of humanity. Join us on this journey of love, where your generosity becomes the heartbeat of countless lives, echoing the melody of compassion.
 						</p>
 						<a href="#" class="btn btn-default btn-lg text-center center-aligned">Become a Life Saver!</a>
 					</div>
