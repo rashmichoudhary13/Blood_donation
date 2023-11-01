@@ -94,6 +94,21 @@
   }
 }
 
+.navbar .logo {
+  width: 99%;
+  max-width: 43%;
+  flex: 8 1 94%;
+  padding: 7px 131px;
+  padding-top: 14px;
+}
+
+  .navbar-nav{
+    font-size: 21px;
+    padding-top: 20px;
+    padding-right: 35px;
+
+  }
+
 /*drop shadow*/
 nav{
 -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.14);
@@ -124,7 +139,7 @@ body{
 
 .pera-text{
 	color: white;
-	font-size: 16px;
+	font-size: 25px;
 }
 .red-background{
 	background-color: #e74c3c;
