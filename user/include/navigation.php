@@ -34,7 +34,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Donor Name
+        <?php if(isset($_SESSION['name'])) echo $_SESSION['name']; ?> <!-- DONOR NAME -->
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           
@@ -43,7 +43,7 @@
           <a class="dropdown-item" href="./update.php"><i class="fa fa-edit" aria-hidden="true"></i>
 Update Profile</a>
 
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="logout.php">
           <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
 
 Logout</a>

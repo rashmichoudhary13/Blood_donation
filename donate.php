@@ -71,9 +71,9 @@ if (isset($_POST['submit'])) {
 	   </div>';
 		}
 
-		// Check for blood group to get save_life_date
+		// Check for blood group 
 		if (isset($_POST['blood_group']) && !empty($_POST['blood_group'])) {
-			$save_the_date = $_POST['blood_group'];
+			$blood_group = $_POST['blood_group'];
 		} else {
 			$bloodError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 	   <strong>Please select blood_Group input.</strong> 
@@ -202,12 +202,7 @@ if (isset($_POST['submit'])) {
 			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password','$blood_group')";
 		    
 			if(mysqli_query($connection,$sql)){
-				$submitSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
-				<strong>Registration Successfull.</strong> 
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-				<span aria-hidden="true">&times;</span>
-				</button>
-				</div>';
+			     header("Location: signin.php");
 			}else{
                 $submitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 			<strong>Registration Failed.</strong> 
@@ -306,7 +301,7 @@ if (isset($_POST['submit'])) {
 						<option value="B+">B+</option>
 						<option value="B-">B-</option>
 						<option value="O+">O+</option>
-						<option value="O-">O+</option>
+						<option value="O-">O-</option>
 						<option value="AB+">AB+</option>
 						<option value="AB-">AB-</option>
 					</select>

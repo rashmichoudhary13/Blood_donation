@@ -36,7 +36,7 @@
 	</head>
 <?php 
     
-   
+    session_start();
     include('include/navigation.php'); 
 
 ?>

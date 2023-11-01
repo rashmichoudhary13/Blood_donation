@@ -2,6 +2,7 @@
 
 	//include header file
 	include ('include/header.php');
+	//include ('include/config.php');
 
 	if(isset($_POST['SignIn'])){
 
@@ -32,7 +33,7 @@
 
 		// Login Query
 		if(isset($email) && isset($password)){
-			$sql = "SELECT * FROM donor WHERE password = '$password' AND email='$email'";
+			$sql = "SELECT * FROM donor WHERE password = '$password' AND email='$email' ";
 			$result = mysqli_query($connection,$sql);
 
 			if(mysqli_num_rows($result)>0){
@@ -40,8 +41,7 @@
 				while($row = mysqli_fetch_assoc($result)){
                     $_SESSION['user_id'] = $row['id'];
                     $_SESSION['name'] = $row['name'];
-                    $_SESSION['email'] = $row['email'];
-					$_SESSION['user_id'] = $row['id'];
+                    $_SESSION['save_life_date'] = $row['save_life_date'];
 
 					header('Location:user/index.php');
 				}

@@ -105,22 +105,26 @@
 			if(mysqli_num_rows($result)>0){
 			
 				  while($row = mysqli_fetch_assoc($result)){
-					 if($row['save_life_date']=='0'){
-			
+					if($row['save_life_date']=='0'){
+						echo '
+						<div class="col-md-3 col-sm-12 col-lg-3 donors_data">
+						<span class="name">'.$row['name'].'</span>
+						<span>'.$row['city'].'</span>
+						<span>'.$row['blood_group'].'</span>
+						<span>'.$row['gender'].'</span>
+						<span>'.$row['email'].'</span>
+						<span>'.$row['contact_no'].'</span>
+						</div>';
 					 }else{
 			
 						 echo '
-						 
 						 <div class="col-md-3 col-sm-12 col-lg-3 donors_data">
 						 <span class="name">'.$row['name'].'</span>
 						 <span>'.$row['city'].'</span>
 						 <span>'.$row['blood_group'].'</span>
 						 <span>'.$row['gender'].'</span>
-						 <span>'.$row['email'].'</span>
-						 <span>'.$row['contact_no'].'</span>
-						 
-						 </div>
-						 ';
+						 <h4 class="name text-center">Donated</h4> 
+						 </div>';
 					 }
 				  }
 			
@@ -134,7 +138,6 @@
 						 </div>';
 			
 			}
-
 		}
 
 		?>
@@ -153,14 +156,14 @@
 
 <script type="text/javascript">
 	$(function(){
-        $("$search").on('click',function(){
+        $("#search").on('click',function(){
 			var city = $("#city").val();
 			var blood_group = $("#blood_group").val();
 			
             $.ajax({
 				type: 'GET',
 				url: 'ajaxsearch.php',
-				data: {city: city, blood_group: blood-group},
+				data: {city: city, blood_group: blood_group},
 				success:function(data){
 					if(!data.error){
 						$("#data").html(data);
