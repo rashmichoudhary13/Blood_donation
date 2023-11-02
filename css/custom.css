@@ -94,21 +94,34 @@
   }
 }
 
+
+/* To fix navbar with logo image */
 .navbar .logo {
   width: 99%;
-  max-width: 43%;
+  max-width: 86%;
   flex: 8 1 94%;
-  padding: 7px 131px;
-  padding-top: 14px;
-}
+  padding-top: 23px;
+ }
 
   .navbar-nav{
     font-size: 21px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-right: 35px;
-
   }
 
+  /* If you want to change the height of navbar use this */
+  .fixed-top {
+    position: fixed;
+    top: -10px;
+    right: 0px;
+    left: -9px;
+    bottom: 710px;
+    z-index: 1045;
+  }
+
+  .header h1{
+    margin-top: 35px;
+  }
 /*drop shadow*/
 nav{
 -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.14);
