@@ -6,7 +6,17 @@
 			$city = $_GET['city'];
 			$blood_group = $_GET['blood_group'];
 			
-			$sql = "SELECT * FROM donor WHERE city='$city' OR blood_group='$blood_group' ";
+			// Initialize the SQL query
+			$sql = "SELECT * FROM donor";
+			
+			// Check if a specific city is selected
+			if ($city != 'All') {
+				// If a specific city is selected, include it in the WHERE clause
+				$sql .= " WHERE city='$city' AND blood_group='$blood_group'";
+			} else{
+				
+	              $sql .= " WHERE blood_group='$blood_group'";
+			}
 
 			$result = mysqli_query($connection,$sql);
 			
