@@ -131,7 +131,7 @@ if (isset($_POST['submit'])) {
 			if (preg_match($pattern, $_POST['email'])) {
 				$check_email = $_POST['email'];
 				$sql = "SELECT email FROM donor WHERE email ='$check_email'";
-                $result = mysqli_query($connection, $sql);
+				$result = mysqli_query($connection, $sql);
 
 				if (mysqli_num_rows($result) > 0) {
 					$emailError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
@@ -194,17 +194,17 @@ if (isset($_POST['submit'])) {
 
 		// Insert data into database
 
-		if(isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email) && isset($password)){
-           $DonorDOB = $year."-".$month."-".$day;
+		if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email) && isset($password)) {
+			$DonorDOB = $year . "-" . $month . "-" . $day;
 
-            $password  = md5($password);
+			$password  = md5($password);
 
 			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password','$blood_group')";
-		    
-			if(mysqli_query($connection,$sql)){
-			     header("Location: signin.php");
-			}else{
-                $submitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+
+			if (mysqli_query($connection, $sql)) {
+				header("Location: signin.php");
+			} else {
+				$submitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 			<strong>Registration Failed.</strong> 
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
 			<span aria-hidden="true">&times;</span>
@@ -276,18 +276,18 @@ if (isset($_POST['submit'])) {
 			<h3>SignUp</h3>
 			<hr class="red-bar">
 			<?php if (isset($termError)) echo $termError;
-			       if(isset($submitSuccess)) echo $submitSuccess;
-				if(isset($submitError)) echo $submitError;
+			if (isset($submitSuccess)) echo $submitSuccess;
+			if (isset($submitError)) echo $submitError;
 			?>
 
-             <!-- Error Messages -->
+			<!-- Error Messages -->
 
 			<form class="form-group" action="" method="post" novalidate="">
 				<div class="form-group">
 					<label for="fullname">Full Name</label>
-					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if (isset($name)) echo $name; ?>" >
-				
-				<?php if (isset($nameError)) echo $nameError; ?>
+					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if (isset($name)) echo $name; ?>">
+
+					<?php if (isset($nameError)) echo $nameError; ?>
 
 				</div><!--full name-->
 
@@ -295,7 +295,7 @@ if (isset($_POST['submit'])) {
 					<label for="name">Blood Group</label><br>
 					<select class="form-control demo-default" id="blood_group" name="blood_group" required>
 						<option value="">---Select Your Blood Group---</option>
-						<?php if(isset($blood_group))  echo '<option selected=""value="'.$blood_group.'">'.$blood_group.'</option>'; ?>
+						<?php if (isset($blood_group))  echo '<option selected=""value="' . $blood_group . '">' . $blood_group . '</option>'; ?>
 						<option value="A+">A+</option>
 						<option value="A-">A-</option>
 						<option value="B+">B+</option>
@@ -312,14 +312,16 @@ if (isset($_POST['submit'])) {
 					<label for="gender">Gender</label><br>
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
 
-					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if(isset($gender)) { if($gender=="Female") echo "checked"; }?>>
+					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
+																														if ($gender == "Female") echo "checked";
+																													} ?>>
 
 				</div><!--gender-->
 				<div class="form-inline">
 					<label for="name">Date of Birth</label><br>
 					<select class="form-control demo-default" id="date" name="day" style="margin-bottom:10px;" required>
 						<option value="">---Date---</option>
-						<?php if(isset($day))  echo '<option selected=""value="'.$day.'">'.$day.'</option>'; ?>
+						<?php if (isset($day))  echo '<option selected=""value="' . $day . '">' . $day . '</option>'; ?>
 						<option value="01">01</option>
 						<option value="02">02</option>
 						<option value="03">03</option>
@@ -354,7 +356,7 @@ if (isset($_POST['submit'])) {
 					</select>
 					<select class="form-control demo-default" name="month" id="month" style="margin-bottom:10px;" required>
 						<option value="">---Month---</option>
-						<?php if(isset($month))  echo '<option selected=""value="'.$month.'">'.$month.'</option>'; ?>
+						<?php if (isset($month))  echo '<option selected=""value="' . $month . '">' . $month . '</option>'; ?>
 						<option value="01">January</option>
 						<option value="02">February</option>
 						<option value="03">March</option>
@@ -370,7 +372,7 @@ if (isset($_POST['submit'])) {
 					</select>
 					<select class="form-control demo-default" id="year" name="year" style="margin-bottom:10px;" required>
 						<option value="">---Year---</option>
-						<?php if(isset($year))  echo '<option selected=""value="'.$year.'">'.$year.'</option>'; ?>
+						<?php if (isset($year))  echo '<option selected=""value="' . $year . '">' . $year . '</option>'; ?>
 						<option value="1957">1957</option>
 						<option value="1958">1958</option>
 						<option value="1959">1959</option>
@@ -428,7 +430,7 @@ if (isset($_POST['submit'])) {
 
 				<div class="form-group">
 					<label for="contact_no">Contact No</label>
-					<input type="text" name="contact_no"  placeholder="+91**********" class="form-control" required pattern="^\d{10}$" title="10 numeric characters only" maxlength="10" value="<?php if (isset($contact)) echo $contact; ?>">
+					<input type="text" name="contact_no" placeholder="+91**********" class="form-control" required pattern="^\d{10}$" title="10 numeric characters only" maxlength="10" value="<?php if (isset($contact)) echo $contact; ?>">
 				</div><!--End form-group-->
 				<?php if (isset($contact_noError)) echo $contact_noError; ?>
 
@@ -436,142 +438,55 @@ if (isset($_POST['submit'])) {
 					<label for="city">City</label>
 					<select name="city" id="city" class="form-control demo-default" required>
 						<option value="">-- Select --</option>
-						<?php if(isset($city))  echo '<option selected=""value="'.$city.'">'.$city.'</option>'; ?>
-						<optgroup title="Azad Jammu and Kashmir (Azad Kashmir)" label="&raquo; Azad Jammu and Kashmir (Azad Kashmir)"></optgroup>
-						<option value="Bagh">Bagh</option>
-						<option value="Bhimber">Bhimber</option>
-						<option value="Kotli">Kotli</option>
-						<option value="Mirpur">Mirpur</option>
-						<option value="Muzaffarabad">Muzaffarabad</option>
-						<option value="Neelum">Neelum</option>
-						<option value="Poonch">Poonch</option>
-						<option value="Sudhnati">Sudhnati</option>
-						<optgroup title="Balochistan" label="&raquo; Balochistan"></optgroup>
-						<option value="Awaran">Awaran</option>
-						<option value="Barkhan">Barkhan</option>
-						<option value="Bolan">Bolan</option>
-						<option value="Chagai">Chagai</option>
-						<option value="Dera Bugti">Dera Bugti</option>
-						<option value="Gwadar">Gwadar</option>
-						<option value="Jafarabad">Jafarabad</option>
-						<option value="Jhal Magsi">Jhal Magsi</option>
-						<option value="Kalat">Kalat</option>
-						<option value="Kech">Kech</option>
-						<option value="Kharan">Kharan</option>
-						<option value="Khuzdar">Khuzdar</option>
-						<option value="Kohlu">Kohlu</option>
-						<option value="Lasbela">Lasbela</option>
-						<option value="Loralai">Loralai</option>
-						<option value="Mastung">Mastung</option>
-						<option value="Musakhel">Musakhel</option>
-						<option value="Naseerabad">Naseerabad</option>
-						<option value="Nushki">Nushki</option>
-						<option value="Panjgur">Panjgur</option>
-						<option value="Pishin">Pishin</option>
-						<option value="Qilla Abdullah">Qilla Abdullah</option>
-						<option value="Qilla Saifullah">Qilla Saifullah</option>
-						<option value="Quetta">Quetta</option>
-						<option value="Sibi">Sibi</option>
-						<option value="Zhob">Zhob</option>
-						<option value="Ziarat">Ziarat</option>
-						<optgroup title="Federally Administered Tribal Areas (FATA" label="&raquo; Federally Administered Tribal Areas (FATA"></optgroup>
-						<option value="Bajaur Agency">Bajaur Agency</option>
-						<option value="Khyber Agency">Khyber Agency</option>
-						<option value="Kurram Agency">Kurram Agency</option>
-						<option value="Mohmand Agency">Mohmand Agency</option>
-						<option value="North Waziristan Agency">North Waziristan Agency</option>
-						<option value="Orakzai Agency">Orakzai Agency</option>
-						<option value="South Waziristan Agency">South Waziristan Agency</option>
-						<optgroup title="Islamabad Capital" label="&raquo; Islamabad Capital"></optgroup>
-						<option value="Islamabad">Islamabad</option>
-						<optgroup title="North-West Frontier Province (NWFP)" label="&raquo; North-West Frontier Province (NWFP)"></optgroup>
-						<option value="Abbottabad">Abbottabad</option>
-						<option value="Bannu">Bannu</option>
-						<option value="Batagram">Batagram</option>
-						<option value="Buner">Buner</option>
-						<option value="Charsadda">Charsadda</option>
-						<option value="Chitral">Chitral</option>
-						<option value="Dera Ismail Khan">Dera Ismail Khan</option>
-						<option value="Dir Lower">Dir Lower</option>
-						<option value="Dir Upper">Dir Upper</option>
-						<option value="Hangu">Hangu</option>
-						<option value="Haripur">Haripur</option>
-						<option value="Karak">Karak</option>
-						<option value="Kohat">Kohat</option>
-						<option value="Kohistan">Kohistan</option>
-						<option value="Lakki Marwat">Lakki Marwat</option>
-						<option value="Malakand">Malakand</option>
-						<option value="Mansehra">Mansehra</option>
-						<option value="Mardan">Mardan</option>
-						<option value="Nowshera">Nowshera</option>
-						<option value="Peshawar">Peshawar</option>
-						<option value="Shangla">Shangla</option>
-						<option value="Swabi">Swabi</option>
-						<option value="Swat">Swat</option>
-						<option value="Tank">Tank</option>
+						<?php if (isset($city))  echo '<option selected=""value="' . $city . '">' . $city . '</option>'; ?>
+						<optgroup title="Maharashtra" label="&raquo; Maharashtra"></optgroup>
+						<option value="Mumbai">Mumbai</option>
+						<option value="Pune">Pune</option>
+						<option value="Nagpur">Nagpur</option>
+						<option value="Thane">Thane</option>
+						<option value="Nashik">Nashik</option>
+						<option value="Aurangabad">Aurangabad</option>
+						<option value="Solapur">Solapur</option>
+						<option value="Kolhapur">Kolhapur</option>
+						<option value="Satara">Satara</option>
+						<option value="Ratnagiri">Ratnagiri</option>
+						<optgroup title="Bihar" label="&raquo; Bihar"></optgroup>
+						<option value="Patna">Patna</option>
+						<option value="Patliputra">Patliputra</option>
+						<option value="Gaya">Gaya</option>
+						<option value="Muzaffarpur">Muzaffarpur</option>
+						<option value="Bhagalpur">Bhagalpur</option>
+						<option value="Darbhanga">Darbhanga</option>
+						<option value="Nalanda">Nalanda</option>
+						<option value="Ara">Ara</option>
+						<option value="Chapra">Chapra</option>
+						<optgroup title="Gujarat" label="&raquo; Gujarat"></optgroup>
+						<option value="Ahmedabad">Ahmedabad</option>
+						<option value="Surat">Surat</option>
+						<option value="Vadodara">Vadodara</option>
+						<option value="Rajkot">Rajkot</option>
+						<option value="Gandhinagar">Gandhinagar</option>
+						<option value="Jamnagar">Jamnagar</option>
+						<option value="Bhavnagar">Bhavnagar</option>
+						<option value="Mehsana">Mehsana</option>
 						<optgroup title="Punjab" label="&raquo; Punjab"></optgroup>
-						<option value="Alipur">Alipur</option>
-						<option value="Attock">Attock</option>
-						<option value="Bahawalnagar">Bahawalnagar</option>
-						<option value="Bahawalpur">Bahawalpur</option>
-						<option value="Bhakkar">Bhakkar</option>
-						<option value="Chakwal">Chakwal</option>
-						<option value="Chiniot">Chiniot</option>
-						<option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
-						<option value="Faisalabad">Faisalabad</option>
-						<option value="Gujranwala">Gujranwala</option>
-						<option value="Gujrat">Gujrat</option>
-						<option value="Hafizabad">Hafizabad</option>
-						<option value="Jhang">Jhang</option>
-						<option value="Jhelum">Jhelum</option>
-						<option value="Kasur">Kasur</option>
-						<option value="Khanewal">Khanewal</option>
-						<option value="Khushab">Khushab</option>
-						<option value="Lahore">Lahore</option>
-						<option value="Layyah">Layyah</option>
-						<option value="Lodhran">Lodhran</option>
-						<option value="Mandi Bahauddin">Mandi Bahauddin</option>
-						<option value="Mianwali">Mianwali</option>
-						<option value="Multan">Multan</option>
-						<option value="Muzaffargarh">Muzaffargarh</option>
-						<option value="Nankana Sahib">Nankana Sahib</option>
-						<option value="Narowal">Narowal</option>
-						<option value="Okara">Okara</option>
-						<option value="Pakpattan">Pakpattan</option>
-						<option value="Rahim Yar Khan">Rahim Yar Khan</option>
-						<option value="Rajanpur">Rajanpur</option>
-						<option value="Rawalpindi">Rawalpindi</option>
-						<option value="Sahiwal">Sahiwal</option>
-						<option value="Sargodha">Sargodha</option>
-						<option value="Sheikhupura">Sheikhupura</option>
-						<option value="Shekhupura">Shekhupura</option>
-						<option value="Sialkot">Sialkot</option>
-						<option value="Toba Tek Singh">Toba Tek Singh</option>
-						<option value="Vehari">Vehari</option>
-						<optgroup title="Sindh" label="&raquo; Sindh"></optgroup>
-						<option value="Badin">Badin</option>
-						<option value="Dadu">Dadu</option>
-						<option value="Ghotki">Ghotki</option>
-						<option value="Hyderabad">Hyderabad</option>
-						<option value="Jacobabad">Jacobabad</option>
-						<option value="Jamshoro">Jamshoro</option>
-						<option value="Karachi">Karachi</option>
-						<option value="Kashmore">Kashmore</option>
-						<option value="Khairpur">Khairpur</option>
-						<option value="Larkana">Larkana</option>
-						<option value="Matiari">Matiari</option>
-						<option value="Mirpur Khas">Mirpur Khas</option>
-						<option value="Naushahro Feroze">Naushahro Feroze</option>
-						<option value="Nawabshah">Nawabshah</option>
-						<option value="Qambar Shahdadkot">Qambar Shahdadkot</option>
-						<option value="Sanghar">Sanghar</option>
-						<option value="Shikarpur">Shikarpur</option>
-						<option value="Sukkur">Sukkur</option>
-						<option value="Tando Allahyar">Tando Allahyar</option>
-						<option value="Tando Muhammad Khan">Tando Muhammad Khan</option>
-						<option value="Tharparkar">Tharparkar</option>
-						<option value="Thatta">Thatta</option>
-						<option value="Umerkot">Umerkot</option>
+						<option value="Amritsar">Amritsar</option>
+						<option value="Ludhiana">Ludhiana</option>
+						<option value="Jalandhar">Jalandhar</option>
+						<option value="Patiala">Patiala</option>
+						<option value="Bathinda">Bathinda</option>
+						<option value="Firozpur">Firozpur</option>
+						<option value="Mohali">Mohali</option>
+						<option value="Pathankot">Pathankot</option>
+						<optgroup title="TamilNadu" label="&raquo; TamilNadu"></optgroup>
+						<option value="Chennai">Chennai</option>
+						<option value="Coimbatore">Coimbatore</option>
+						<option value="Madurai">Madurai</option>
+						<option value="Tiruchirappalli">Tiruchirappalli</option>
+						<option value="Salem">Salem</option>
+						<option value="Tirunelveli">Tirunelveli</option>
+						<option value="Vellore">Vellore</option>
+						<option value="Thanjavur">Thanjavur</option>
 					</select>
 				</div><!--city end-->
 				<?php if (isset($cityError)) echo $cityError; ?>
@@ -587,7 +502,7 @@ if (isset($_POST['submit'])) {
 					<?php if (isset($c_passwordError)) echo $c_passwordError; ?>
 				</div><!--End form-group-->
 				<div class="form-inline">
-					<input type="checkbox" checked=""  name="term" value="true" required style="margin-left:10px;">
+					<input type="checkbox" checked="" name="term" value="true" required style="margin-left:10px;">
 					<span style="margin-left:10px;"><b>I am agree to donate my blood and show my Name, Contact Nos. and E-Mail in Blood donors List</b></span>
 				</div><!--End form-group-->
 
