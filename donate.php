@@ -416,6 +416,12 @@ if (isset($_POST['submit'])) {
 						<option value="1997">1997</option>
 						<option value="1998">1998</option>
 						<option value="1999">1999</option>
+						<option value="1999">2000</option>
+						<option value="1999">2001</option>
+						<option value="1999">2002</option>
+						<option value="1999">2003</option>
+						<option value="1999">2004</option>
+						<option value="1999">2005</option>
 					</select>
 				</div><!--End form-group-->
 				<?php if (isset($dayError)) echo $dayError; ?>

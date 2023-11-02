@@ -72,7 +72,7 @@
 			</p>
 			
 		</div>
-		<div ><img src="img/target.png" alt="Our Vission" class="rounded img-fluid float-right"></div>
+		<div id="target"><img src="img/target.png" alt="Our Vission" class="rounded img-fluid float-right"></div>
 	</div>
 	</div>		
 </div>
