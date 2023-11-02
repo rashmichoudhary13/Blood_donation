@@ -6,14 +6,14 @@
 						<hr class="white-bar">
 
 							<h1 class="text-center">
-								<a  target="_blank" href="https://www.facebook.com/exceptionalprogrammers"><i style="color: #fff;" class="fab fa-facebook-square"></i></a>
+								<a  target="_blank" href="https://www.facebook.com"><i style="color: #fff;" class="fab fa-facebook-square"></i></a>
 
-								<a target="_blank" href="https://www.youtube.com/exceptionalprogrammers"><i style="color: #fff;" class="fab fa-youtube-square"></i></a> 
+								<a target="_blank" href="https://www.youtube.com"><i style="color: #fff;" class="fab fa-youtube-square"></i></a> 
 							</h1>
 
 							<div class="details">
-								 <p> 92 300 1234567 <i class="fa fa-phone"></i>
-								exceptionalprogrammers@gmail.com <i class="fa fa-envelope"></i>  </p>
+								 <p> 9756342567 <i class="fa fa-phone"></i>
+								WeDonate@gmail.com <i class="fa fa-envelope"></i>  </p>
 							</div>
 
 					</div>
