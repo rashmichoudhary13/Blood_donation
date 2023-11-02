@@ -4,7 +4,7 @@
 
    if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
 
-	include 'include/sidebar.php';
+	
 
 	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
 
@@ -28,6 +28,210 @@
 		}
 	  }
 
+	  if (isset($_POST['submit'])) {
+		
+	
+			// Check for name
+			if (isset($_POST['name']) && !empty($_POST['name'])) {
+				if (preg_match('/^[A-Za-z\s]+$/', $_POST['name'])) {
+					$name = $_POST['name'];
+				} else {
+					$nameError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Only lower and upper case and space characters are allowed.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+				}
+			} else {
+				$nameError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please fill the name field.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for gender
+			if (isset($_POST['gender']) && !empty($_POST['gender'])) {
+				$gender = $_POST['gender'];
+			} else {
+				$genderError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please select gender input.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for date of birth
+			if (isset($_POST['day']) && !empty($_POST['day'])) {
+				$day = $_POST['day'];
+			} else {
+				$dayError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please select date input.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+			if (isset($_POST['month']) && !empty($_POST['month'])) {
+				$month = $_POST['month'];
+			} else {
+				$monthError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please select month input.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+			if (isset($_POST['year']) && !empty($_POST['year'])) {
+				$year = $_POST['year'];
+			} else {
+				$yearError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please select year input.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for blood group 
+			if (isset($_POST['blood_group']) && !empty($_POST['blood_group'])) {
+				$blood_group = $_POST['blood_group'];
+			} else {
+				$bloodError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please select blood_Group input.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for City
+			if (isset($_POST['city']) && !empty($_POST['city'])) {
+				if (preg_match('/^[A-Za-z\s]+$/', $_POST['city'])) {
+					$city = $_POST['city'];
+				} else {
+					$cityError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Only lower and upper case and space characters are allowed.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+				}
+			} else {
+				$cityError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please fill the city field.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for contact_no
+			if (isset($_POST['contact_no']) && !empty($_POST['contact_no'])) {
+				if (preg_match('/^\d{10}$/', $_POST['contact_no'])) {
+					$contact = $_POST['contact_no'];
+				} else {
+					$contact_noError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Contact must consist 10 digit.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+				}
+			} else {
+				$contact_noError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please fill the Contact field.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			// Check for Email
+			if (isset($_POST['email']) && !empty($_POST['email'])) {
+				$pattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+				if (preg_match($pattern, $_POST['email'])) {
+					$check_email = $_POST['email'];
+					$sql = "SELECT email FROM donor WHERE email ='$check_email'";
+					$result = mysqli_query($connection, $sql);
+	
+					if (mysqli_num_rows($result) > 0) {
+						$emailError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+						<strong>Sorry, This email already exist.</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+						<span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+					} else {
+						$email = $_POST['email'];
+					}
+				} else {
+					$emailError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please enter valid email address.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+				}
+			} else {
+				$emailError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		   <strong>Please fill the email field.</strong> 
+		   <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		   <span aria-hidden="true">&times;</span>
+		   </button>
+		   </div>';
+			}
+	
+			
+	
+			// Insert data into database
+	
+			if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email)) {
+				$DonorDOB = $year . "-" . $month . "-" . $day;
+	
+				
+	
+				$sql = "UPDATE donor SET name='$name',gender='$gender',email='$email',city='$city',dob='$DonorDOB',contact_no='$contact',blood_group='$blood_group' WHERE id=".$_SESSION['user_id']; 
+				
+				
+	
+				if (mysqli_query($connection, $sql)) {
+					
+					?>
+
+					<script>
+                         function myFunction() {
+							location.reload();
+							
+						 }
+
+
+					</script>
+
+
+
+
+
+                 <?php
+
+				} else {
+					$updateError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+				<strong>Data Not Updated Try again.</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>';
+				}
+			}
+			
+	}
+
+	include 'include/sidebar.php';
+
+
 ?>
 
 <style>
@@ -47,6 +251,7 @@
 					<div class="panel panel-default" style="padding: 20px;">
 					
 					<!-- Error Messages -->	
+                <?php if(isset($updateError)) echo $updateError ;?>
 
 
 					<form class="form-group" action="" method="post" novalidate="">
@@ -262,12 +467,38 @@
 
 
 				<div class="form-group">
-					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-danger center-aligned" style="margin-top: 20px;">SignUp</button>
+					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-danger center-aligned" style="margin-top: 20px;">Update</button>
 				</div>
 			</form>
 					</div>
 				</div>
 
+
+				<div class="card col-md-6 offset-md-3">
+
+				<!-- Messages -->	
+
+				<form action="" method="post" class="form-group form-container" >
+							
+							<div class="form-group">
+								<label for="oldpassword">Current Password</label>
+								<input type="password" required name="old_password" placeholder="Current Password" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="newpassword">New Password</label>
+								<input type="password" required name="new_password" placeholder="New Password" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="c_password">Confirm Password</label>
+								<input type="password" required name="c_password" placeholder="Confirm Password" class="form-control">
+							</div>
+							<div class="form-group">
+								<button class="btn btn-lg btn-danger center-aligned" type="submit" name="update_pass">Update Password</button>
+							</div>
+						</form>
+					</div>
+				</div>
+					
 
 				<div class="card col-md-6 offset-md-3">
 					
@@ -288,6 +519,7 @@
 						</form>
 					</div>
 				</div>
+
 
 			</div>
 		</div>
