@@ -6,28 +6,7 @@
 
 	
 
-	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
-
-      $result = mysqli_query($connection,$sql);
-
-      if(mysqli_num_rows($result)>0){
-
-		while($row = mysqli_fetch_assoc($result)){
-		
-			$name = $row['name'];
-			$blood_group = $row['blood_group'];
-			$gender = $row['gender'];
-			$email = $row['email'];
-			$contact = $row['contact_no'];
-			$city = $row['city'];
-
-			$dob = $row['dob'];
-
-			$date = explode("-", $dob);
-		
-		}
-	  }
-
+	
 	  if (isset($_POST['submit'])) {
 		
 	
@@ -199,6 +178,13 @@
 				
 	
 				if (mysqli_query($connection, $sql)) {
+
+					$updateSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
+					<strong>Data updated.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
 					
 					?>
 
@@ -227,6 +213,127 @@
 				}
 			}
 			
+	}  // End of submit if 
+	
+	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
+
+	$result = mysqli_query($connection,$sql);
+
+	if(mysqli_num_rows($result)>0){
+
+	  while($row = mysqli_fetch_assoc($result)){
+
+		  $userID = $row['id'];
+		  $name = $row['name'];
+		  $blood_group = $row['blood_group'];
+		  $gender = $row['gender'];
+		  $email = $row['email'];
+		  $contact = $row['contact_no'];
+		  $city = $row['city'];
+
+		  $dob = $row['dob'];
+
+		  $date = explode("-", $dob);
+
+		  $dbPassword = $row['password'];
+	  
+	  }
+	}
+
+
+	if(isset($_POST['update_pass'])){
+
+           
+		// Check for Password
+		if (isset($_POST['old_password']) && !empty($_POST['old_password']) && isset($_POST['c_password']) && !empty($_POST['c_password']) && isset($_POST['new_password']) && !empty($_POST['new_password'])  ) {
+
+              $oldpassword = md5($_POST['old_password']);
+			  if($oldpassword == $dbPassword){
+
+				if (strlen($_POST['new_password']) >= 6) {
+
+					if ($_POST['new_password'] == $_POST['c_password']) {
+						$password = md5($_POST['new_password']);
+					} else {
+						$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Confirm Password is not same.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+					}
+				} else {
+					$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Password must contain at least 6 characters.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+				}
+
+			  }else{
+                    
+				$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Confirm Please enter a valid Password.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+
+			  }
+
+
+			
+
+
+
+
+		} else {
+			$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+			<strong>Please set a password.</strong> 
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>';
+		}
+
+		if(isset($password)){
+			$sql = "UPDATE donor SET password='$password' WHERE id='$userID'";
+
+			if (mysqli_query($connection, $sql)) {
+
+				$updatePasswordSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
+					<strong>Password updated.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+
+				?>
+
+					<script>
+                         function myFunction() {
+							location.reload();
+							
+						 }
+
+					</script>
+
+                 <?php
+
+	
+				
+			} else {
+				$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Data not inserted Try agian.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+			}
+
+		}
+
 	}
 
 	include 'include/sidebar.php';
@@ -251,7 +358,9 @@
 					<div class="panel panel-default" style="padding: 20px;">
 					
 					<!-- Error Messages -->	
-                <?php if(isset($updateError)) echo $updateError ;?>
+                <?php if(isset($updateError)) echo $updateError ;
+				      if(isset($updateSuccess)) echo $updateSuccess ;
+				?>
 
 
 					<form class="form-group" action="" method="post" novalidate="">
@@ -479,6 +588,10 @@
 				<!-- Messages -->	
 
 				<form action="" method="post" class="form-group form-container" >
+				<?php if(isset($passwordError)) echo $passwordError ; 
+				       if(isset($updatePasswordSuccess)) echo $updatePasswordSuccess ;   
+
+				?>
 							
 							<div class="form-group">
 								<label for="oldpassword">Current Password</label>
