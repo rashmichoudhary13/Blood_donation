@@ -1,7 +1,7 @@
 <body>
 <!-- Navigation starts -->
 <nav id="mainNav" class="navbar fixed-top navbar-default navbar-expand-lg navbar-light bg-light own-nav">
-  <a class="navbar-brand" href="./index.php"><img src="../img/logo.png" class="logo"></a>
+  <a class="navbar-brand" href="./index.php">WeDonate</a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
