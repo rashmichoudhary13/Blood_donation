@@ -65,30 +65,6 @@
 </div>
 
 
-<!--	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Are you delete this record?</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <form target="" method="post">
-                <br>
-                <input type="hidden" name="delId" value="">
-                <button type="submit" name="delete" class="btn btn-danger">Yes</button>
-
-                <button type="button" class="btn btn-info" data-dismiss="alert">
-                <span aria-hidden="true">Oops! No </span>
-                </button>      
-            </form>
-     </div>
-
-     <br>
-
-     <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Message</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>   -->
 
 <div class="container" style="padding: 60px 0;">
 	<div class="row data">
@@ -111,9 +87,29 @@ if(mysqli_num_rows($result)>0){
 			<span>'.$row['gender'].'</span>
 			<span>'.$row['email'].'</span>
 			<span>'.$row['contact_no'].'</span>
-			</div>';
+			</div>
+			       ';
 		 }else{
+			$date = $row['save_life_date']; 
+			$start = date_create("$date");
+			$end   = date_create();
+			$diff  = date_diff($start, $end);
+			$diffMonth = $diff->m;
+			if ($diffMonth >= 3) {
+				echo '
+				<div class="col-md-3 col-sm-12 col-lg-3 donors_data">
+				<span class="name">'.$row['name'].'</span>
+				<span>'.$row['city'].'</span>
+				<span>'.$row['blood_group'].'</span>
+				<span>'.$row['gender'].'</span>
+				<span>'.$row['email'].'</span>
+				<span>'.$row['contact_no'].'</span>
+				</div>';
+			
 
+			}else{
+
+                 
 			 echo '
 			 <div class="col-md-3 col-sm-12 col-lg-3 donors_data">
 			 <span class="name">'.$row['name'].'</span>
@@ -122,6 +118,10 @@ if(mysqli_num_rows($result)>0){
 			 <span>'.$row['gender'].'</span>
 			 <h4 class="name text-center">Donated</h4> 
 			 </div>';
+
+			}
+
+
 		 }
 	  }
 
