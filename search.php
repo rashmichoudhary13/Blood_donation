@@ -1,16 +1,14 @@
 <?php
-
 //include header file
 include('include/header.php');
-
 ?>
+
 <style>
 	.size {
 		min-height: 0px;
 		padding: 60px 0 40px 0;
 
 	}
-
 	.loader {
 		display: none;
 		width: 69px;
@@ -21,39 +19,31 @@ include('include/header.php');
 		padding: 2px;
 		z-index: 1;
 	}
-
 	.loader .fa {
 		color: #e74c3c;
 		font-size: 52px !important;
 	}
-
 	.form-group {
 		text-align: left;
 	}
-
 	h1 {
 		color: white;
 	}
-
 	h3 {
 		color: #e74c3c;
 		text-align: center;
 	}
-
 	.red-bar {
 		width: 25%;
 	}
-
 	span {
 		display: block;
 	}
-
 	.name {
 		color: #e74c3c;
 		font-size: 22px;
 		font-weight: 700;
 	}
-
 	.donors_data {
 		background-color: white;
 		border-radius: 5px;
@@ -64,6 +54,7 @@ include('include/header.php');
 		padding: 20px 10px 20px 30px;
 	}
 </style>
+
 <div class="container-fluid red-background size">
 	<div class="row">
 		<div class="ccol-md-6 offset-md-3">
@@ -128,7 +119,7 @@ include('include/header.php');
 				<div class="form-group center-aligned">
 					<select name="blood_group" id="blood_group" style="padding: 0 20px; width: 220px; height: 45px;" class="form-control demo-default text-center margin10px">
 
-						<option value="A+">A+</option>
+					    <option value="A+">A+</option>
 						<option value="A-">A-</option>
 						<option value="B+">B+</option>
 						<option value="B-">B-</option>
@@ -205,14 +196,13 @@ include('include/header.php');
 						 </div>';
 			}
 		}
-
 		?>
-
-	</div>
+</div>
 </div>
 <div class="loader" id="wait">
 	<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
 </div>
+
 <?php
 
 //include footer file

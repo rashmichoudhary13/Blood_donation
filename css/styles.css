@@ -1,51 +1,32 @@
-/*
-Lumino Admin Bootstrap Template
-Version 1.0
-*/
-
-
-/*Global Styles*/
-
 body {
 	background: #f1f4f7;
 	padding-top: 50px;
 	color: #5f6468;
 	font-family: "Roboto", sans-serif;
-
 }
-
-
-
 p {
 	color: #777;
 }
-
 a, a:hover, a:focus {
 	color: #e74c3c;
 }
-
 h1, h2, h3, h4, h5, h6 {
 	color: #5f6468;
 }
-
 h1 {
 	font-weight: 300;
 	font-size: 40px;
 }
-
 h2 {
 	font-weight: 300;
 	margin-bottom: 20px;
 }
-
 h3, h4 {
 	font-weight: 300;
 }
-
 .large {
 	font-size: 2em;
 }
-
 .text-muted {
 	color: #9fadbb;
 }
@@ -62,48 +43,27 @@ h3, h4 {
 .no-padding {
 	padding: 0; margin: 0;
 }
-
 .glyphicon-xl {
 	font-size: 6em;
 }
-
 .glyphicon-l {
 	font-size: 3em;
 }
-
 .glyphicon-m {
 	font-size: 1.5em;
 }
-
 .glyphicon-s {
 	font-size: 0.75em;
 }
-
 .form-control {
 	border: 1px solid #eee;
 	box-shadow: none;
 }
-
 .form-control:focus {
 	border: 1px solid #30a5ff;
 	outline: 0;
 	box-shadow: inset 0px 0px 0px 1px #30a5ff;
 }
-
-/*.navbar-header .navbar-brand {
-	color: #e74c3c;
-	font-size: 16px;
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 2px;
-}
-.navbar-brand:hover{
-	color: #e74c3c !important;
-}
-
-.navbar-header .navbar-brand span {
-	color: #30a5ff;
-}*/
 
 /*Buttons*/
 
@@ -111,7 +71,6 @@ a.btn:hover,
 button:hover {
 	opacity: 0.8;
 }
-
 a.btn:active,
 button:active {
 	box-shadow: inset 0px 0px 500px rgba(0,0,0,.1);
@@ -295,11 +254,9 @@ a.bg-danger:hover {
 }
 
 /*Panels*/
-
 .panel {
 	border: 0;
 }
-
 .panel-heading {
 	font-size: 18px;
 	font-weight: 300;
@@ -307,42 +264,34 @@ a.bg-danger:hover {
 	height: 66px;
 	line-height: 45px;
 }
-
 .panel-default .panel-heading {
 	background: #fff;
 	border-bottom: 1px solid #eee;
 	color: #5f6468;
 }
-
 .panel-footer {
 	background: #fff;
 	border-top: 1px solid #eee;
 }
-
 .panel-widget {
 	padding: 0;
 	position: relative;
 }
-
 .panel-widget .panel-footer {
 	border: 0;
 	text-align: center;
 }
-
 .panel-footer .input-group {
 	padding: 0px;
 	margin: 0 -5px;
 }
-
 .panel-footer .input-group-btn:last-child>.btn, 
 .panel-footer .input-group-btn:last-child>.btn-group {
 	margin: 0;
 }
-
 .panel-widget .panel-footer a {
 	color: #999;
 }
-
 .panel-widget .panel-footer a:hover {
 	color: #666;
 	text-decoration: none;
@@ -379,7 +328,6 @@ a.bg-danger:hover {
 	background: rgba(0, 0, 0, .05);
 	text-align: center;
 }
-
 .widget-left {
 	height: 80px;
 	padding-top: 15px;
@@ -387,7 +335,6 @@ a.bg-danger:hover {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 }
-
 .widget-right {
 	text-align: left;
 	line-height: 1.6em;
@@ -452,12 +399,10 @@ a.bg-danger:hover {
 	margin: 0;
 	padding: 0;
 }
-
 .nav-tabs {
 	background: #e9ecf2;
 	border: 0;
 }
-
 .nav-tabs li a:hover {
 	background: #fff;
 }
@@ -491,12 +436,10 @@ a.bg-danger:hover {
 .tab-content {
 	padding: 15px;
 }
-
 .navbar-nav li a .glyphicon{
 	color:#e74c3c;
 	font-size: 16px; 
 }
-
 .navbar-nav li a{
 	color: #e74c3c !important;
 }
@@ -516,16 +459,13 @@ a.bg-danger:hover {
 	margin: 0 auto;
 }
 
-
 /* Sidebar */
-
 .sidebar {
 	display: block;
 	background-color: #fff;
 	padding: 0;
 	display: none;
 }
-
 .sidebar form {
 	padding: 20px 15px 5px 15px;
 	border-bottom: 1px solid #eee;
@@ -552,7 +492,6 @@ a.bg-danger:hover {
 		width: 100%;
 	}*/
 }
-
 
 .sidebar ul.nav a:hover, 
 .sidebar ul.nav li.parent ul li a:hover {
@@ -597,17 +536,13 @@ a.bg-danger:hover {
 	padding-left: 30px;
 	line-height: 40px;
 }
-
-
 .sidebar span.glyphicon {
 	margin-right: 10px;
 }
-
 .sidebar ul.nav li.divider {
 	border-bottom: 1px solid #eee;
 	margin: 20px 0;
 }
-
 .sidebar .attribution {
 	position: absolute;
 	bottom: 0px;
@@ -627,32 +562,26 @@ a.bg-danger:hover {
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 	margin: 0 ;
 }
-
 h1.page-header {
 	margin-top: 30px;
 	border-bottom: 0;
 }
 
 /*Charts*/
-
 .main-chart {
 	background: #fff;
 }
-
 .easypiechart-panel {
 	text-align: center;
 	padding: 1px 0;
 	margin-bottom: 20px;
 }
-
 .placeholder h2 {
 	margin-bottom: 0px;
 }
-
 .donut {
 	width: 100%;
 }
-
 .easypiechart {
 	position: relative;
 	text-align: center;
@@ -660,7 +589,6 @@ h1.page-header {
 	height: 120px;
 	margin: 20px auto 10px auto;
 }
-
 .easypiechart .percent {
 	display: block;
 	position: absolute;
@@ -736,57 +664,47 @@ h1.page-header {
 	margin-right:5px; 
 	color: #9fadbb; 
 }
-
 .todo-list-item .glyphicon:hover { 
 	margin-right:5px; 
 	color: #1b3548; 
 }
-
 .todo-list { 
 	padding: 0;
 	margin: -15px;
 	background: #fff;
 	color: #5f6468;
 }
-
 #checkbox {
 	margin: 0;
 }
-
 .todo-list .checkbox { 
 	display:inline-block; 
 	margin: 0px;
 }
-
 .panel-body input[type=checkbox]:checked + label { 
 	text-decoration: line-through;
 	color: #777; 
 }
-
 .todo-list-item {
 	list-style: none;
 	line-height: 0.9;
 	padding: 14px 15px 8px 15px;
 }
-
 .todo-list-item:hover, a.todo-list-item:focus {
 	text-decoration: none;
 	background-color: #f6f6f6;
 }
-
 .todo-list-item .trash .glyph:hover {
 	color: #ef4040;
 }
 
 
 /*Chat Widget*/
-
 .chat ul {
 	list-style: none;
 	margin: -15px;
 	padding: 15px;
 }
-
 .chat ul li {
 	margin-bottom: 10px;
 	padding: 15px 5px;
@@ -799,16 +717,13 @@ h1.page-header {
 .chat ul li .chat-body p {
 	margin: 0;
 }
-
 .chat ul .glyphicon {
 	margin-right: 5px;
 }
-
 .chat .panel-body {
 	overflow-y: scroll;
 	height: 300px;
 }
-
 .chat-body small {
 	margin-left: 5px;
 }
@@ -817,11 +732,9 @@ h1.page-header {
 .table {
 	background: #fff;
 }
-
 .fixed-table-container {
 	border: 1px solid #eee;
 }
-
 .fixed-table-container thead th {
 	background: #f7f7f8;
 	border-color: #ddd;
@@ -829,21 +742,17 @@ h1.page-header {
 	font-weight: 300;
 	font-size: 16px;
 }
-
 .fixed-table-container tbody td {
 	border: 1px solid #eee;
 }
-
 .fixed-table-container tbody td:last-child {
 	border-right: none;
 }
-
 .table>thead>tr>th {
 	border-bottom: 1px solid #e6e7e8;
 	vertical-align: middle;
 	height: 50px;
 }
-
 .fixed-table-pagination .pagination {
     margin-top: 10px;
     margin-bottom: 0px;
@@ -853,68 +762,56 @@ h1.page-header {
 }
 
 /*Icons*/
-
-
 .sidebar .glyph, .user-menu .glyph {
 	height: 16px;
 	width: 16px;
 	margin: 0 10px 0 0;
 	stroke-width: 3px;
 }
-
 .user-menu .glyph {
 	stroke-width: 4px;
 }
-
 .breadcrumb .glyph {
 	height: 14px;
 	width: 14px;
 	margin: -2px 0 0 0;
 	stroke-width: 4px;
 }
-
 .alert .glyph, .panel-heading .glyph {
 	width: 26px;
 	height: 26px;
 	margin: 0 10px 0 0;
 	stroke-width: 2px;
 }
-
 .panel-widget .glyph {
 	stroke-width: 2px;
 }
-
 .todo-list .glyph {
 	width: 14px;
 	height: 14px;
 	stroke-width: 4px;
 	color: #999;
 }
-
 .glyph.table {
 	background: none;
 	border: none;
 }
 
 /*Icon Grid*/
-
 .icon-grid div {
 	border: 1px solid #ddd;
 	margin: 0 0 -1px -1px;
 	text-align: center;
 	padding: 10px 0 20px 0;
 }
-
 .icon-grid svg {
 	width: 35%;
 	display: block;
 	margin: 0 auto;
 }
-
 .icon-grid h4 {
 	display: none;
 }
-
 .icon-grid pre {
 	margin: 10px 10px -10px 10px;
 	border-radius: 0;

@@ -1,7 +1,5 @@
 <?php	
-	
-	include ('include/header.php'); 
-
+   include ('include/header.php'); 
 ?>
 
 <style>
@@ -63,16 +61,12 @@
 		</div>
 	</div>
 </div>
-
-
-
 <div class="container" style="padding: 60px 0;">
 	<div class="row data">
 		
-	<?php
+<?php
 
 $sql = "SELECT * FROM donor";
-
 $result = mysqli_query($connection,$sql);
 
 if(mysqli_num_rows($result)>0){
@@ -87,8 +81,7 @@ if(mysqli_num_rows($result)>0){
 			<span>'.$row['gender'].'</span>
 			<span>'.$row['email'].'</span>
 			<span>'.$row['contact_no'].'</span>
-			</div>
-			       ';
+			</div>';
 		 }else{
 			$date = $row['save_life_date']; 
 			$start = date_create("$date");
@@ -105,12 +98,7 @@ if(mysqli_num_rows($result)>0){
 				<span>'.$row['email'].'</span>
 				<span>'.$row['contact_no'].'</span>
 				</div>';
-			
-
-			}else{
-
-                 
-			 echo '
+			}else{ echo '
 			 <div class="col-md-3 col-sm-12 col-lg-3 donors_data">
 			 <span class="name">'.$row['name'].'</span>
 			 <span>'.$row['city'].'</span>
@@ -118,13 +106,9 @@ if(mysqli_num_rows($result)>0){
 			 <span>'.$row['gender'].'</span>
 			 <h4 class="name text-center">Donated</h4> 
 			 </div>';
-
 			}
-
-
-		 }
+		}
 	  }
-
 }else{
 	  
 	  echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -133,20 +117,10 @@ if(mysqli_num_rows($result)>0){
 			 <span aria-hidden="true">&times;</span>
 			 </button>
 			 </div>';
-
 }
-
 ?>
-
-	</div>
 </div>
-
-<!-- <div class="loader" id="wait">
-	<i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
-</div> -->
-
+</div>
 <?php	
-
-	include ('include/footer.php'); 
-
+     include ('include/footer.php'); 
 ?>

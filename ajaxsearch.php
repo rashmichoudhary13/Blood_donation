@@ -15,7 +15,7 @@
 				$sql .= " WHERE city='$city' AND blood_group='$blood_group'";
 			} else{
 				
-	              $sql .= " WHERE blood_group='$blood_group'";
+				$sql .= " WHERE blood_group='$blood_group'";
 			}
 
 			$result = mysqli_query($connection,$sql);

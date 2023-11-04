@@ -99,15 +99,12 @@
   padding-left: 113px;
   font-size: 2.1rem;
 }
-
 .nav-item{
   font-size: 1.5rem;
 }
-
 .header h1{
   margin-top: 35px;
 } 
-
 /* Logo ended */
 
 /* To fix navbar with logo image
@@ -117,13 +114,11 @@
   flex: 8 1 94%;
   padding-top: 23px;
  }
-
-  .navbar-nav{
+ .navbar-nav{
     font-size: 21px;
     padding-top: 10px;
     padding-right: 35px;
   } */
-
   /* If you want to change the height of navbar use this */
   /* .fixed-top {
     position: fixed;
@@ -162,7 +157,6 @@ body{
   color:#e74c3c;
   background-color:#e74c3c;
 }
-
 .para-text{
 	color: white;
 	font-size: 25px;
@@ -174,8 +168,7 @@ body{
 	padding: 10px
 }
 .header-img{
-	 
-   background: url(../img/header.png) no-repeat center center fixed;
+  background: url(../img/header.png) no-repeat center center fixed;
 	 -webkit-background-size: cover;
   -moz-background-size: cover;
     background-size: cover;
@@ -208,6 +201,7 @@ body{
 	font-weight: 700;
 }
 .btn-success{
+  background-color: #e74c3c;
 	border-radius: 25px;
 	padding: 10px 30px;
 	font-size: 22px;
@@ -224,7 +218,6 @@ body{
 	font-weight: 700;
   background-color:#fff;
 }
-
 .btn-default:hover{
   color: #333;
   background-color: #e6e6e6;
@@ -237,7 +230,6 @@ body{
 .margin10px{
 	margin: 10px;
 }
-
 .aboutus{
   padding: 40px 0 20px 0;
   margin: 0 auto;
@@ -286,7 +278,6 @@ body{
   font-weight: 400px;
 
 }
-
 .details p{
   margin-left: 120px;
 }

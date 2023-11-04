@@ -44,7 +44,6 @@
 	</div>
 </div>
 <div class="container-fluid size">
-	
 	<div class="container">
 		<div class="row">
 		<div class="col-md-6"><img src="img/binoculars.png" alt="Our Vission" class="rounded float-left img-fluid"></div>
@@ -70,16 +69,14 @@
 			<p>
 			WeCare is dedicated to achieving several unique goals: to enhance blood donation awareness, making it a societal norm; to streamline the donation process, ensuring efficiency and accessibility for all; to build a diverse, active donor base; to leverage technology for real-time matching of donors and recipients; and to foster a culture of empathy, unity, and continuous support in the global community.
 			</p>
-			
 		</div>
 		<div id="target"><img src="img/target.png" alt="Our Vission" class="rounded img-fluid float-right"></div>
 	</div>
 	</div>		
 </div>
 </div>
-	
 
-	<div class="container-fluid size">
+    <div class="container-fluid size">
 		<div class="container">
 		<div class="row">
 		<div class="col-md-6"><img src="img/goal.png" alt="Our Vission" class="rounded float-left img-fluid"></div>
@@ -89,7 +86,6 @@
 			<p>
 			WeCare's mission is to save lives by connecting donors with those in need through our user-friendly blood donation platform. We are committed to ensuring a safe, reliable, and convenient donation experience for both donors and recipients. Through innovative technology and community engagement, we strive to bridge the gap between blood supply and demand, promoting a healthier future for all.
 			</p>
-			
 		</div>
 	</div>
 	</div>

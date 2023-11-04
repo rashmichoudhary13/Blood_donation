@@ -1,6 +1,5 @@
 <?php 
-
-	//include header file
+    //include header file
 	include ('include/header.php');
 	//include ('include/config.php');
 
@@ -87,7 +86,8 @@
 box-shadow: 0px 2px 5px -2px rgba(89,89,89,0.95);
 	}
 </style>
- <div class="container-fluid red-background size">
+
+<div class="container-fluid red-background size">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<h1 class="text-center">SignIn</h1>

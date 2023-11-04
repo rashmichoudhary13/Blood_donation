@@ -196,9 +196,7 @@ if (isset($_POST['submit'])) {
 
 		if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email) && isset($password)) {
 			$DonorDOB = $year . "-" . $month . "-" . $day;
-
 			$password  = md5($password);
-
 			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password','$blood_group')";
 
 			if (mysqli_query($connection, $sql)) {
@@ -222,10 +220,7 @@ if (isset($_POST['submit'])) {
 	   </div>';
 	}
 }
-
 ?>
-
-
 
 <style>
 	.size {
@@ -233,7 +228,6 @@ if (isset($_POST['submit'])) {
 		padding: 60px 0 40px 0;
 
 	}
-
 	.form-container {
 		background-color: white;
 		border: .5px solid #eee;
@@ -243,21 +237,16 @@ if (isset($_POST['submit'])) {
 		-moz-box-shadow: 0px 2px 5px -2px rgba(89, 89, 89, 0.95);
 		box-shadow: 0px 2px 5px -2px rgba(89, 89, 89, 0.95);
 	}
-
 	.form-group {
 		text-align: left;
 	}
-
-
 	h1 {
 		color: white;
 	}
-
 	h3 {
 		color: #e74c3c;
 		text-align: center;
 	}
-
 	.red-bar {
 		width: 25%;
 	}
@@ -307,17 +296,17 @@ if (isset($_POST['submit'])) {
 						<option value="AB-">AB-</option>
 					</select>
 				</div><!--End form-group-->
+
 				<?php if (isset($bloodError)) echo $bloodError; ?>
 
 				<div class="form-group">
 					<label for="gender">Gender</label><br>
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
-
-					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
-																														if ($gender == "Female") echo "checked";
-																													} ?>>
-
-				</div><!--gender-->
+					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" 
+					<?php if (isset($gender)){
+						if ($gender == "Female") echo "checked";
+						} ?>>
+					</div><!--gender-->
 				<div class="form-inline">
 					<label for="name">Date of Birth</label><br>
 					<select class="form-control demo-default" id="date" name="day" style="margin-bottom:10px;" required>
@@ -425,9 +414,9 @@ if (isset($_POST['submit'])) {
 						<option value="1999">2005</option>
 					</select>
 				</div><!--End form-group-->
-				<?php if (isset($dayError)) echo $dayError; ?>
-				<?php if (isset($monthError)) echo $monthError; ?>
-				<?php if (isset($yearError)) echo $yearError; ?>
+				<?php if (isset($dayError)) echo $dayError; 
+				      if (isset($monthError)) echo $monthError; 
+				      if (isset($yearError)) echo $yearError; ?>
 
 				<div class="form-group">
 					<label for="fullname">Email</label>

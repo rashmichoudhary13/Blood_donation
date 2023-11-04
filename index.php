@@ -1,10 +1,7 @@
 <?php
-
 //include header file
 include('include/header.php');
-
 ?>
-
 
 <div class="container-fluid header-img">
 	<div class="row">
@@ -14,14 +11,11 @@ include('include/header.php');
 				<h1 class="text-center">Donate the blood, save the life</h1>
 				<p class="text-center">Donate the blood to help the others.</p>
 			</div>
-
-
 			<h1 class="text-center">Search The Donors</h1>
 			<hr class="white-bar text-center">
 
 			<form action="search.php" method="get" class="form-inline text-center" style="padding: 40px 0px 0px 43px;">
 				<div class="form-group text-center justify-content-center">
-
 					<select style="width: 220px; height: 45px;" name="city" id="city" class="form-control demo-default" required>
 						<option value="">-- Select --</option>
 						<option value="All">All</option>
@@ -77,8 +71,7 @@ include('include/header.php');
 				</div>
 				<div class="form-group center-aligned">
 					<select name="blood_group" id="blood_group" style="padding: 0 20px; width: 220px; height: 45px;" class="form-control demo-default text-center margin10px">
-
-						<option value="A+">A+</option>
+					    <option value="A+">A+</option>
 						<option value="A-">A-</option>
 						<option value="B+">B+</option>
 						<option value="B-">B-</option>
@@ -86,7 +79,6 @@ include('include/header.php');
 						<option value="AB-">AB-</option>
 						<option value="O+">O+</option>
 						<option value="O-">O-</option>
-
 					</select>
 				</div>
 				<div class="form-group center-aligned">
