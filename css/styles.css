@@ -516,45 +516,6 @@ a.bg-danger:hover {
 	margin: 0 auto;
 }
 
-/*Navbar*/
-
-/*.navbar {
-	border: 0;
-	color: #e74c3c !important;
-	background-color: white;
-}
-
-.navbar input {
-	border: 0;
-	background: #444;
-	color: #fff;
-}
-
-.navbar input:focus {
-	color: #fff;
-	background: #555;
-	border: 1px solid #30a5ff;
-	outline: 0;
-	box-shadow: inset 0px 0px 0px 1px #30a5ff;
-}*/
-
-/*.user-menu {
-	display: inline-block;
-	margin-top: 14px;
-	margin-right: 10px;
-	float: right;
-	list-style: none;
-	padding: 0;
-}
-
-.user-menu a {
-	color: #e74c3c;
-}
-
-.user-menu a:hover, .user-menu a:focus {
-	text-decoration: none;
-
-}*/
 
 /* Sidebar */
 

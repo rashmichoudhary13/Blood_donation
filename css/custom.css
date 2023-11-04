@@ -96,7 +96,7 @@
 
 /* For logo */
 .navbar-brand{
-  padding-left: 112px;
+  padding-left: 113px;
   font-size: 2.1rem;
 }
 
@@ -202,6 +202,13 @@ body{
 }
 .btn-danger{
 	background-color: #e74c3c;
+	border-radius: 25px;
+	padding: 10px 30px;
+	font-size: 22px;
+	font-weight: 700;
+}
+.btn-success{
+  background-color: #e74c3c;
 	border-radius: 25px;
 	padding: 10px 30px;
 	font-size: 22px;

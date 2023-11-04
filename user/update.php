@@ -4,34 +4,25 @@
 
    if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
 
-	
-
-	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
-
-      $result = mysqli_query($connection,$sql);
+   $sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
+   $result = mysqli_query($connection,$sql);
 
       if(mysqli_num_rows($result)>0){
 
 		while($row = mysqli_fetch_assoc($result)){
-		
-			$name = $row['name'];
+		    $name = $row['name'];
 			$blood_group = $row['blood_group'];
 			$gender = $row['gender'];
 			$email = $row['email'];
 			$contact = $row['contact_no'];
 			$city = $row['city'];
-
-			$dob = $row['dob'];
-
-			$date = explode("-", $dob);
-		
+            $dob = $row['dob'];
+            $date = explode("-", $dob);
 		}
 	  }
 
 	  if (isset($_POST['submit'])) {
-		
-	
-			// Check for name
+		// Check for name
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
 				if (preg_match('/^[A-Za-z\s]+$/', $_POST['name'])) {
 					$name = $_POST['name'];
@@ -185,39 +176,21 @@
 		   </div>';
 			}
 	
-			
-	
 			// Insert data into database
-	
-			if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email)) {
-				$DonorDOB = $year . "-" . $month . "-" . $day;
-	
+	        if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email)) 
+			{
+			$DonorDOB = $year . "-" . $month . "-" . $day;
+	         $sql = "UPDATE donor SET name='$name',gender='$gender',email='$email',city='$city',dob='$DonorDOB',contact_no='$contact',blood_group='$blood_group' WHERE id=".$_SESSION['user_id']; 
 				
-	
-				$sql = "UPDATE donor SET name='$name',gender='$gender',email='$email',city='$city',dob='$DonorDOB',contact_no='$contact',blood_group='$blood_group' WHERE id=".$_SESSION['user_id']; 
-				
-				
-	
-				if (mysqli_query($connection, $sql)) {
-					
-					?>
-
-					<script>
+			 if (mysqli_query($connection, $sql)) {
+			?>
+                    <script>
                          function myFunction() {
 							location.reload();
-							
-						 }
-
-
-					</script>
-
-
-
-
-
-                 <?php
-
-				} else {
+							}
+                    </script>
+ <?php
+            } else {
 					$updateError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 				<strong>Data Not Updated Try again.</strong> 
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
@@ -226,12 +199,58 @@
 				</div>';
 				}
 			}
+	}
+   
+	if(isset($_POST['delete_account'])){
+
+	   if(isset($_POST['account_password']) && !empty($_POST['account_password'])){
+		$account_password = $_POST['account_password'];
+		
+		$showForm = '
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Are you sure you want to delete your account?</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <form target="" method="post">
+                <br>
+                <input type="hidden" name="userID" value="' . $_SESSION['user_id'] . '">
+                <button type="submit" name="updateSave" class="btn btn-danger">Yes</button>
+                <button type="submit" name="updateSave" class="btn btn-success">No</button>
+				</button>      
+            </form>
+     </div>';
+		
+	   }else{
+		$deleteAccountError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+		<strong>Please Enter your Password.</strong> 
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+		<span aria-hidden="true">&times;</span>
+		</button>
+		</div>';
+	   }
+	}
+
+	if (isset($_POST['userID'])) {
+
+		$userID = $_POST['userID'];
+		$sql = "DELETE FROM donor WHERE id=".$userID;
+
+		if (mysqli_query($connection, $sql)) {
+
+			header("Location: logout.php");
 			
+		} else {
+			$deletesubmitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+				<strong>Account not deleted. Try again</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>';
+		}
 	}
 
 	include 'include/sidebar.php';
-
-
 ?>
 
 <style>
@@ -251,10 +270,12 @@
 					<div class="panel panel-default" style="padding: 20px;">
 					
 					<!-- Error Messages -->	
-                <?php if(isset($updateError)) echo $updateError ;?>
+                <?php if(isset($showForm)) echo $showForm; 
+				      if(isset($updateError)) echo $updateError;
+				      if(isset($deletesubmitError)) echo $deletesubmitError;
+					   ?>
 
-
-					<form class="form-group" action="" method="post" novalidate="">
+                   <form class="form-group" action="" method="post" novalidate="">
 				<div class="form-group">
 					<label for="fullname">Full Name</label>
 					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if (isset($name)) echo $name; ?>">
@@ -285,7 +306,7 @@
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
 
 					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
-																														if ($gender == "Female") echo "checked";
+																														                    if ($gender == "Female") echo "checked";
 																													} ?>>
 
 				</div><!--gender-->
@@ -463,18 +484,13 @@
 				</div><!--city end-->
 				<?php if (isset($cityError)) echo $cityError; ?>
 
-				
-
-
 				<div class="form-group">
 					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-danger center-aligned" style="margin-top: 20px;">Update</button>
 				</div>
 			</form>
 					</div>
 				</div>
-
-
-				<div class="card col-md-6 offset-md-3">
+                <div class="card col-md-6 offset-md-3">
 
 				<!-- Messages -->	
 
@@ -503,6 +519,7 @@
 				<div class="card col-md-6 offset-md-3">
 					
 					<!-- Display Message -->
+					<?php  if(isset($deleteAccountError)) echo $deleteAccountError; ?>
 
 					<div class="panel panel-default" style="padding: 20px;">
 						<form action="" method="post" class="form-group form-container" >
