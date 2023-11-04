@@ -190,7 +190,7 @@
 			
 	}  // End of submit if 
 	
-	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
+	$sql = "SELECT * FROM donor WHERE id=".$_SESSION['user_id'];
 	$result = mysqli_query($connection,$sql);
 
 	if(mysqli_num_rows($result)>0){
@@ -297,7 +297,7 @@
 				<br>
 				<input type="hidden" name="userID" value="' . $_SESSION['user_id'] . '">
 				<button type="submit" name="updateSave" class="btn btn-danger">Yes</button>
-				<button type="submit" name="updateSave" class="btn btn-success">No</button>
+				<button type="button" data-dismiss="alert" class="btn btn-success">No</button>
 				</button>      
 			</form>
 	 </div>';
