@@ -4,25 +4,8 @@
 
    if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
 
-   $sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
-   $result = mysqli_query($connection,$sql);
-
-      if(mysqli_num_rows($result)>0){
-
-		while($row = mysqli_fetch_assoc($result)){
-		    $name = $row['name'];
-			$blood_group = $row['blood_group'];
-			$gender = $row['gender'];
-			$email = $row['email'];
-			$contact = $row['contact_no'];
-			$city = $row['city'];
-            $dob = $row['dob'];
-            $date = explode("-", $dob);
-		}
-	  }
-
-	  if (isset($_POST['submit'])) {
-		// Check for name
+       if (isset($_POST['submit'])) {
+		   // Check for name
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
 				if (preg_match('/^[A-Za-z\s]+$/', $_POST['name'])) {
 					$name = $_POST['name'];
@@ -176,21 +159,26 @@
 		   </div>';
 			}
 	
-			// Insert data into database
-	        if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email)) 
-			{
-			$DonorDOB = $year . "-" . $month . "-" . $day;
-	         $sql = "UPDATE donor SET name='$name',gender='$gender',email='$email',city='$city',dob='$DonorDOB',contact_no='$contact',blood_group='$blood_group' WHERE id=".$_SESSION['user_id']; 
-				
-			 if (mysqli_query($connection, $sql)) {
-			?>
-                    <script>
+		  // Insert data into database
+	        if (isset($name) && isset($gender) && isset($day) && isset($month) && isset($year) && isset($blood_group) && isset($city) && isset($contact) && isset($email)) {
+				$DonorDOB = $year . "-" . $month . "-" . $day;
+	            $sql = "UPDATE donor SET name='$name',gender='$gender',email='$email',city='$city',dob='$DonorDOB',contact_no='$contact',blood_group='$blood_group' WHERE id=".$_SESSION['user_id']; 
+				    
+				if (mysqli_query($connection, $sql)) {
+                $updateSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
+					              <strong>Data updated.</strong> 
+					             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					             <span aria-hidden="true">&times;</span>
+					            </button>
+					            </div>';
+				   ?>
+				   <script>
                          function myFunction() {
 							location.reload();
 							}
-                    </script>
- <?php
-            } else {
+					</script>
+<?php
+          } else {
 					$updateError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 				<strong>Data Not Updated Try again.</strong> 
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
@@ -199,58 +187,154 @@
 				</div>';
 				}
 			}
+			
+	}  // End of submit if 
+	
+	$sql = "SELECT * FROM donor WHERE id=" .$_SESSION['user_id'];
+	$result = mysqli_query($connection,$sql);
+
+	if(mysqli_num_rows($result)>0){
+
+	  while($row = mysqli_fetch_assoc($result)){
+
+		  $userID = $row['id'];
+		  $name = $row['name'];
+		  $blood_group = $row['blood_group'];
+		  $gender = $row['gender'];
+		  $email = $row['email'];
+		  $contact = $row['contact_no'];
+		  $city = $row['city'];
+          $dob = $row['dob'];
+		  $date = explode("-", $dob);
+          $dbPassword = $row['password'];
+	  }
 	}
-   
+
+   if(isset($_POST['update_pass'])){
+
+        // Check for Password
+		if (isset($_POST['old_password']) && !empty($_POST['old_password']) && isset($_POST['c_password']) && !empty($_POST['c_password']) && isset($_POST['new_password']) && !empty($_POST['new_password'])  ) {
+
+              $oldpassword = md5($_POST['old_password']);
+			  if($oldpassword == $dbPassword){
+
+				if (strlen($_POST['new_password']) >= 6) {
+
+					if ($_POST['new_password'] == $_POST['c_password']) {
+						$password = md5($_POST['new_password']);
+					} else {
+						$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Confirm Password is not same.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+					}
+				} else {
+					$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Password must contain at least 6 characters.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+				}
+			}else{
+                    $passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Password is incorrect.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+				}
+			} else {
+			$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+			<strong>Please set a password.</strong> 
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>';
+		}
+		if(isset($password)){
+         	$sql = "UPDATE donor SET password='$password' WHERE id='$userID'";
+
+			if (mysqli_query($connection, $sql)) {
+				$updatePasswordSuccess = '<div class="alert alert-success alert-dismissible fade show" role="alert"> 
+					<strong>Password updated.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+					?>
+					<script>
+                         function myFunction() {
+							location.reload();
+						 }
+						 </script>
+						 <?php
+						 } else {
+				$passwordError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+					<strong>Data not inserted Try agian.</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+			}
+		}
+	}
+
 	if(isset($_POST['delete_account'])){
 
-	   if(isset($_POST['account_password']) && !empty($_POST['account_password'])){
-		$account_password = $_POST['account_password'];
-		
-		$showForm = '
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Are you sure you want to delete your account?</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <form target="" method="post">
-                <br>
-                <input type="hidden" name="userID" value="' . $_SESSION['user_id'] . '">
-                <button type="submit" name="updateSave" class="btn btn-danger">Yes</button>
-                <button type="submit" name="updateSave" class="btn btn-success">No</button>
+		if(isset($_POST['account_password']) && !empty($_POST['account_password'])){
+			$account_password = md5($_POST['account_password']);
+			if($account_password == $dbPassword){
+				$showForm = '
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>Are you sure you want to delete your account?</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<form target="" method="post">
+				<br>
+				<input type="hidden" name="userID" value="' . $_SESSION['user_id'] . '">
+				<button type="submit" name="updateSave" class="btn btn-danger">Yes</button>
+				<button type="submit" name="updateSave" class="btn btn-success">No</button>
 				</button>      
-            </form>
-     </div>';
-		
-	   }else{
-		$deleteAccountError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
-		<strong>Please Enter your Password.</strong> 
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-		<span aria-hidden="true">&times;</span>
-		</button>
-		</div>';
-	   }
+			</form>
+	 </div>';
+			}else{
+				$deleteAccountError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+				<strong>Incorrect Password.</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>';
+			}
+		}else{
+			$deleteAccountError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+			<strong>Please enter your Password.</strong> 
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>';
+	}
 	}
 
 	if (isset($_POST['userID'])) {
 
 		$userID = $_POST['userID'];
 		$sql = "DELETE FROM donor WHERE id=".$userID;
-
 		if (mysqli_query($connection, $sql)) {
-
-			header("Location: logout.php");
-			
+                header("Location: logout.php");
 		} else {
 			$deletesubmitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
-				<strong>Account not deleted. Try again</strong> 
+				<strong>Account not deleted. Try again.</strong> 
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
 				<span aria-hidden="true">&times;</span>
 				</button>
 				</div>';
 		}
 	}
-
-	include 'include/sidebar.php';
+include 'include/sidebar.php';
 ?>
 
 <style>
@@ -270,12 +354,14 @@
 					<div class="panel panel-default" style="padding: 20px;">
 					
 					<!-- Error Messages -->	
-                <?php if(isset($showForm)) echo $showForm; 
-				      if(isset($updateError)) echo $updateError;
-				      if(isset($deletesubmitError)) echo $deletesubmitError;
-					   ?>
+                <?php if(isset($updateError)) echo $updateError ;
+				      if(isset($updateSuccess)) echo $updateSuccess ;
+				      if(isset($showForm)) echo $showForm ;
+				      if(isset($deletesubmitError)) echo $deletesubmitError ;
+				?>
 
-                   <form class="form-group" action="" method="post" novalidate="">
+
+					<form class="form-group" action="" method="post" novalidate="">
 				<div class="form-group">
 					<label for="fullname">Full Name</label>
 					<input type="text" name="name" id="fullname" placeholder="Full Name" required pattern="[A-Za-z/\s]+" title="Only lower and upper case and space" class="form-control" value="<?php if (isset($name)) echo $name; ?>">
@@ -306,7 +392,7 @@
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
 
 					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
-																														                    if ($gender == "Female") echo "checked";
+																														if ($gender == "Female") echo "checked";
 																													} ?>>
 
 				</div><!--gender-->
@@ -488,15 +574,18 @@
 					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-danger center-aligned" style="margin-top: 20px;">Update</button>
 				</div>
 			</form>
-					</div>
 				</div>
-                <div class="card col-md-6 offset-md-3">
+				</div>
+				<div class="card col-md-6 offset-md-3">
 
 				<!-- Messages -->	
 
 				<form action="" method="post" class="form-group form-container" >
-							
-							<div class="form-group">
+				<?php if(isset($passwordError)) echo $passwordError ; 
+				       if(isset($updatePasswordSuccess)) echo $updatePasswordSuccess ;   
+
+				?>
+				<div class="form-group">
 								<label for="oldpassword">Current Password</label>
 								<input type="password" required name="old_password" placeholder="Current Password" class="form-control">
 							</div>
@@ -514,12 +603,10 @@
 						</form>
 					</div>
 				</div>
-					
-
+				
 				<div class="card col-md-6 offset-md-3">
-					
 					<!-- Display Message -->
-					<?php  if(isset($deleteAccountError)) echo $deleteAccountError; ?>
+					<?php if(isset($deleteAccountError)) echo $deleteAccountError; ?>
 
 					<div class="panel panel-default" style="padding: 20px;">
 						<form action="" method="post" class="form-group form-container" >
@@ -532,12 +619,9 @@
 							<div class="form-group">
 								<button class="btn btn-lg btn-danger center-aligned" type="submit" name="delete_account">Delete Account</button>
 							</div>
-
 						</form>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 																												
