@@ -495,6 +495,12 @@ include 'include/sidebar.php';
 						<option value="1997">1997</option>
 						<option value="1998">1998</option>
 						<option value="1999">1999</option>
+						<option value="2000">2000</option>
+						<option value="2001">2001</option>
+						<option value="2002">2002</option>
+						<option value="2003">2003</option>
+						<option value="2004">2004</option>
+						<option value="2005">2005</option>
 					</select>
 				</div><!--End form-group-->
 				<?php if (isset($dayError)) echo $dayError; ?>
@@ -604,7 +610,7 @@ include 'include/sidebar.php';
 					</div>
 				</div>
 				
-				<div class="card col-md-6 offset-md-3">
+				<div class="card leng col-md-6 offset-md-3">
 					<!-- Display Message -->
 					<?php if(isset($deleteAccountError)) echo $deleteAccountError; ?>
 
