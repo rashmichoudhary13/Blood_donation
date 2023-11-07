@@ -1,2 +1,13 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "", "wecare") or die("Database is not connected." . mysqli_connect_error());
+
+$server = "localhost";
+$username = "root";
+$password = "";
+$db = "wecare";
+$connection = mysqli_connect($server, $username, $password, $db);
+
+if(!$connection){
+    die("Connection to database failed" . mysqli_connect_error());
+}
+
+?> 
