@@ -2,9 +2,9 @@
 //include header file
 include('include/header.php');
 
-// Check for terms and condition
+// if condition checks if the submit btn is clicked or not
 if (isset($_POST['submit'])) {
-	if (isset($_POST['term']) === true) {
+	if (isset($_POST['term'])) {
 
 		// Check for name
 		if (isset($_POST['name']) && !empty($_POST['name'])) {
@@ -200,7 +200,7 @@ if (isset($_POST['submit'])) {
 			$sql = "INSERT INTO donor(name,gender,email,city,dob,contact_no,save_life_date,password,blood_group) VALUES('$name','$gender','$email','$city','$DonorDOB','$contact','0','$password','$blood_group')";
 
 			if (mysqli_query($connection, $sql)) {
-				header("Location: signin.php");
+				header("Location: signin.php"); //Redirecting the user to signin page
 			} else {
 				$submitError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 			<strong>Registration Failed.</strong> 
@@ -221,6 +221,7 @@ if (isset($_POST['submit'])) {
 	}
 }
 ?>
+
 
 <style>
 	.size {
@@ -266,8 +267,7 @@ if (isset($_POST['submit'])) {
 			<h3>SignUp</h3>
 			<hr class="red-bar">
 			<?php if (isset($termError)) echo $termError;
-			if (isset($submitSuccess)) echo $submitSuccess;
-			if (isset($submitError)) echo $submitError;
+		          if (isset($submitError)) echo $submitError;
 			?>
 
 			<!-- Error Messages -->
@@ -513,4 +513,5 @@ if (isset($_POST['submit'])) {
 <?php
 //include footer file
 include('include/footer.php');
+
 ?>

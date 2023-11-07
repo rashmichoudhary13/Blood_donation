@@ -67,8 +67,9 @@
 <?php
 
 $sql = "SELECT * FROM donor";
-$result = mysqli_query($connection,$sql);
+$result = mysqli_query($connection,$sql);  
 
+//Check for the data availability
 if(mysqli_num_rows($result)>0){
 
 	  while($row = mysqli_fetch_assoc($result)){
