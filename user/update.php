@@ -107,6 +107,12 @@
 			if (isset($_POST['contact_no']) && !empty($_POST['contact_no'])) {
 				if (preg_match('/^\d{10}$/', $_POST['contact_no'])) {
 					$contact = $_POST['contact_no'];
+					// $sql = "SELECT contact_no FROM donor WHERE contact_no ='$contact'";
+					// $result = mysqli_query($connection, $sql);
+
+					// if (mysqli_num_rows($result) < 0) {
+					// 	$contact_no = $_POST['contact_no'];
+					// } 
 				} else {
 					$contact_noError = '<div class="alert alert-danger alert-dismissible fade show" role="alert"> 
 		   <strong>Contact must consist 10 digit.</strong> 
@@ -391,7 +397,7 @@ include 'include/sidebar.php';
 					<label for="gender">Gender</label><br>
 					Male<input type="radio" name="gender" id="gender" value="Male" style="margin-left:10px; margin-right:10px;" checked>
 
-					Female<input type="radio" name="gender" id="gender" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
+					Female<input type="radio" name="gender" id="gender1" value="Female" style="margin-left:10px;" <?php if (isset($gender)) {
 																														if ($gender == "Female") echo "checked";
 																													} ?>>
 

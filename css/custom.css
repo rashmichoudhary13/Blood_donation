@@ -168,7 +168,7 @@ body{
 	padding: 10px
 }
 .header-img{
-  background: url(../img/header.png) no-repeat center center fixed;
+  background: url(../img/background.jpg) no-repeat center center fixed;
 	 -webkit-background-size: cover;
   -moz-background-size: cover;
     background-size: cover;
