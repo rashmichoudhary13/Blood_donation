@@ -8,8 +8,8 @@ include('include/header.php');
 		<div class="col-md-6 offset-md-3">
 
 			<div class="header">
-				<h1 class="text-center">Donate the blood, save the life</h1>
-				<p class="text-center">Donate the blood to help the others.</p>
+				<h1 class="text-center">Be a Hero, Donate Blood</h1>
+				<p class="text-center">Donate the blood and save a life.</p>
 			</div>
 			<h1 class="text-center">Search The Donors</h1>
 			<hr class="white-bar text-center">
